@@ -15,6 +15,18 @@ $ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```bash
 $ source /opt/ros/humble/setup.bash
 $ ros2 run relocation relocation
+## Change It To Your Map
+$ ros2 service call /map_server/load_map nav2_msgs/srv/LoadMap "{map_url: '/home/yuan/fishbot/src/fishbot_navigation2/maps/map.yaml'}"
+## Then give a 2D POSE ESTIMATE
+```
+
+## For Simulation
+```bash
+$ ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
+## Then Use Any Navigation Packages, Change Map, Suah as:
+$ ros2 launch fishbot_navigation2 navigation2.launch.py use_sim_time:=True
+$ ros2 run relocation relocation
+## Change It To Your Map
 $ ros2 service call /map_server/load_map nav2_msgs/srv/LoadMap "{map_url: '/home/yuan/fishbot/src/fishbot_navigation2/maps/map.yaml'}"
 ## Then give a 2D POSE ESTIMATE
 ```
